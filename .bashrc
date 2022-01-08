@@ -44,7 +44,11 @@ gh-clone () {
 }
 
 clipcat () {
-	cat $1 | xclip -selection clipboard
+	if hash xclip 2>/dev/null; then # checks if xclip is installed
+		cat $1 | xclip -selection clipboard
+	else
+		echo "Hey man, you might wanna install xclip to use this command. :)"
+	fi
 }
 
 extract () {
