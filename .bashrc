@@ -31,8 +31,7 @@ OTHERS_COLOR=$'\033[00m'
 CMD_SIGN='$' # I really don't know how to name this one lol
 
 # if current user is root
-if [[ $EUID == 0 ]]
-then
+if [[ $EUID -eq 0 ]]; then
 	USER_COLOR=$'\033[31m'
 	CMD_SIGN='#'
 fi
@@ -72,3 +71,48 @@ extract () {
      fi
 }
 
+video-dl () {
+    if hash youtube-dl 2>/dev/null ; then
+        if [ $# -eq 0 ]; then
+            echo "You didn't enter any arguments, dumbass."
+        elif [ $1 = "-h" ] || [ $1 = "--help" ]; then
+            echo "Usage: video-dl [OPTIONS] URL
+            -o, --output           Specifies the output file, without the extension
+            -c, --convert          Converts the file to the specified format
+            -h, --help             Prints this text and exit
+            "
+        else
+            arguments=("$@")
+            last_arg=""
+            filename=""
+            convert=""
+            video_url=""
+
+            for arg in "${arguments[@]}"; do
+                case $last_arg in
+                    "-o" | "--output")     filename="$arg" ;;
+                    "-c" | "--convert")    convert="$arg"  ;;
+                    "" | *)                video_url="$arg";;
+                esac
+
+                last_arg="$arg"
+            done
+
+            if [ "$filename" = "" ]; then
+                filename="%(title)s"
+            fi
+
+            youtube-dl -o "${filename}.%(ext)s" -f 'best' "${video_url}"
+            file=$(youtube-dl -o "${filename}.%(ext)s" -f 'best' "${video_url}" --get-filename)
+
+            if [ "$convert" = "" ]; then
+                :
+            else
+                ffmpeg -i "${file}" "${file%.*}${convert}"
+                rm -f "${file}"
+            fi
+        fi
+    else
+        echo "You might wanna install youtube-dl for this command buddy."
+    fi
+}
