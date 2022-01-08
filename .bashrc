@@ -43,6 +43,10 @@ gh-clone () {
 	git clone https://github.com/$1
 }
 
+clipcat () {
+	cat $1 | xclip -selection clipboard
+}
+
 extract () {
      if [ -f $1 ] ; then
          case $1 in
