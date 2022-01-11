@@ -42,7 +42,7 @@ fi
 PS1='\[${BRACKET_COLOR}\][\[${USER_COLOR}\]\u\[${OTHERS_COLOR}\]@\[${HOST_COLOR}\]\h \[${PWD_COLOR}\]\W\[${BRACKET_COLOR}\]]\[${OTHERS_COLOR}\]${CMD_SIGN} '
 
 gh-clone () {
-	git clone https://github.com/$1
+	git clone https://github.com/$1 $2
 }
 
 clipcat () {
