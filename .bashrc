@@ -8,6 +8,9 @@
 alias ls='ls --color=auto'
 alias yt-dl='youtube-dl'
 
+complete -cf sudo
+complete -cf man
+
 # PS1 color config:
 #
 # \[\033[COLORm\]
@@ -82,11 +85,11 @@ video-dl () {
             -h, --help             Prints this text and exit
             "
         else
-            arguments=("$@")
-            last_arg=""
-            filename=""
-            convert=""
-            video_url=""
+            local arguments=("$@")
+            local last_arg=""
+            local filename=""
+            local convert=""
+            local video_url=""
 
             for arg in "${arguments[@]}"; do
                 case $last_arg in
@@ -103,7 +106,7 @@ video-dl () {
             fi
 
             youtube-dl -o "${filename}.%(ext)s" -f 'best' "${video_url}"
-            file=$(youtube-dl -o "${filename}.%(ext)s" -f 'best' "${video_url}" --get-filename)
+            local file=$(youtube-dl -o "${filename}.%(ext)s" -f 'best' "${video_url}" --get-filename)
 
             if [ "$convert" = "" ]; then
                 :
