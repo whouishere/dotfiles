@@ -41,6 +41,8 @@ fi
 
 PS1='\[${BRACKET_COLOR}\][\[${USER_COLOR}\]\u\[${OTHERS_COLOR}\]@\[${HOST_COLOR}\]\h \[${PWD_COLOR}\]\W\[${BRACKET_COLOR}\]]\[${OTHERS_COLOR}\]${CMD_SIGN} '
 
+export PATH=$PATH:~/.local/bin
+
 gh-clone () {
 	git clone https://github.com/$1 $2
 }
@@ -74,48 +76,3 @@ extract () {
      fi
 }
 
-video-dl () {
-    if hash youtube-dl 2>/dev/null ; then
-        if [ $# -eq 0 ]; then
-            echo "You didn't enter any arguments, dumbass."
-        elif [ $1 = "-h" ] || [ $1 = "--help" ]; then
-            echo "Usage: video-dl [OPTIONS] URL
-            -o, --output           Specifies the output file, without the extension
-            -c, --convert          Converts the file to the specified format
-            -h, --help             Prints this text and exit
-            "
-        else
-            local arguments=("$@")
-            local last_arg=""
-            local filename=""
-            local convert=""
-            local video_url=""
-
-            for arg in "${arguments[@]}"; do
-                case $last_arg in
-                    "-o" | "--output")     filename="$arg" ;;
-                    "-c" | "--convert")    convert="$arg"  ;;
-                    "" | *)                video_url="$arg";;
-                esac
-
-                last_arg="$arg"
-            done
-
-            if [ "$filename" = "" ]; then
-                filename="%(title)s"
-            fi
-
-            youtube-dl -o "${filename}.%(ext)s" -f 'best' "${video_url}"
-            local file=$(youtube-dl -o "${filename}.%(ext)s" -f 'best' "${video_url}" --get-filename)
-
-            if [ "$convert" = "" ]; then
-                :
-            else
-                ffmpeg -i "${file}" "${file%.*}${convert}"
-                rm -f "${file}"
-            fi
-        fi
-    else
-        echo "You might wanna install youtube-dl for this command buddy."
-    fi
-}
