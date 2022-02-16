@@ -8,7 +8,8 @@ install:
 
 windows:
 	cp windows.bashrc ~/.bashrc
-	$(foreach file,$(SCRIPTS),cp $(file) C:/Windows/System32/$(file);)
+	@echo If access to System32 is denied, execute the Makefile on an elevated shell.
+	$(foreach file,$(SCRIPTS),cp $(file) C:/WINDOWS/system32/$(file);)
 
 root:
 	$(foreach file,$(SRC),sudo cp $(file) /root/$(file);)
