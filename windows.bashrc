@@ -2,6 +2,8 @@ alias ls='ls --color=auto'
 alias mpv="mpv.com"
 alias yt-dl='youtube-dl'
 
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
 gh-clone () {
 	git clone https://github.com/$1 $2
 }
