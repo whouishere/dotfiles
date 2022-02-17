@@ -1,5 +1,6 @@
 alias ls='ls --color=auto'
-alias mpv="mpv.com"
+alias mpv='mpv.com'
+alias python3='py'
 alias yt-dl='youtube-dl'
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
