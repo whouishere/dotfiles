@@ -2,10 +2,7 @@ alias ls='ls --color=auto'
 alias mpv='mpv.com'
 alias python3='py'
 alias yt-dl='youtube-dl'
-
-# this is (obviously) an absolute path which will not work anywhere besides this specific machine
-alias cpan='C:/libs-comps/perl/perl/bin/cpan.bat'
-alias perl='C:/libs-comps/perl/perl/bin/perl.exe'
+alias msbuild='msbuild.exe'
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
