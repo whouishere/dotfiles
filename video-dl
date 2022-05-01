@@ -34,8 +34,8 @@ if hash $binary 2>/dev/null ; then
             filename="%(title)s"
         fi
 
-        $binary -o "${filename}.%(ext)s" -f 'best' "${video_url}"
-        file=$($binary -o "${filename}.%(ext)s" -f 'best' "${video_url}" --get-filename)
+        $binary -o "${filename}.%(ext)s" "${video_url}"
+        file=$($binary -o "${filename}.%(ext)s" "${video_url}" --get-filename)
 
         if [ "$convert" = "" ]; then
             :

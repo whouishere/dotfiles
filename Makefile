@@ -1,6 +1,8 @@
 SRC = .bashrc .xinitrc .xsession .Xresources .Xkbmap
 SCRIPTS = video-dl audio-dl
 
+.PHONY: install windows root
+
 install: 
 	$(foreach file,$(SRC),cp $(file) ~/$(file);)
 	mkdir -p ~/.local/bin
