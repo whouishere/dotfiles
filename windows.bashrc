@@ -6,7 +6,7 @@ alias msbuild='msbuild.exe'
 alias perl='/c/libs-comps/Strawberry/perl/bin/perl'
 
 # fuck git bash's perl install.
-export PERL5LIB=/c/libs-comps/Strawberry/perl/vendor/lib:/c/libs-comps/Strawberry/perl/site/lib
+export PERL5LIB=/c/libs-comps/Strawberry/perl/vendor/lib:/c/libs-comps/Strawberry/perl/site/lib:/c/libs-comps/Strawberry/perl/lib
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 gh-clone () {
