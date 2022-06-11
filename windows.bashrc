@@ -3,6 +3,7 @@ alias mpv='mpv.com'
 alias python3='py'
 alias yt-dl='youtube-dl'
 alias msbuild='msbuild.exe'
+alias perl='/c/libs-comps/Strawberry/perl/bin/perl'
 
 # fuck git bash's perl install.
 export PERL5LIB=/c/libs-comps/Strawberry/perl/vendor/lib:/c/libs-comps/Strawberry/perl/site/lib
