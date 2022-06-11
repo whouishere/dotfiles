@@ -4,6 +4,8 @@ alias python3='py'
 alias yt-dl='youtube-dl'
 alias msbuild='msbuild.exe'
 
+# fuck git bash's perl install.
+export PERL5LIB=/c/libs-comps/Strawberry/perl/vendor/lib:/c/libs-comps/Strawberry/perl/site/lib
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 gh-clone () {
