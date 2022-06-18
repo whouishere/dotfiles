@@ -21,6 +21,10 @@ gh-clone () {
 	git-clone github.com $@
 }
 
+gl-clone () {
+    git-clone gitlab.com $@
+}
+
 clipcat () {
     clip < $1
 }

@@ -55,6 +55,10 @@ gh-clone () {
 	git-clone github.com $@
 }
 
+gl-clone () {
+    git-clone gitlab.com $@
+}
+
 clipcat () {
 	if hash xclip 2>/dev/null; then # checks if xclip is installed
 		cat $1 | xclip -selection clipboard
