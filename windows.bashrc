@@ -9,12 +9,16 @@ alias perl='/c/libs-comps/Strawberry/perl/bin/perl'
 export PERL5LIB=/c/libs-comps/Strawberry/perl/vendor/lib:/c/libs-comps/Strawberry/perl/site/lib:/c/libs-comps/Strawberry/perl/lib
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
-gh-clone () {
-    if [ "$1" = "-ssh" -o "$1" = "--ssh" ]; then
-        git clone git@github.com:$2 $3
+git-clone () {
+    if [ "$2" = "-ssh" -o "$2" = "--ssh" ]; then
+        git clone git@$1:$3 $4
     else
-	    git clone https://github.com/$1 $2
+	    git clone https://$1/$2 $3
     fi
+}
+
+gh-clone () {
+	git-clone github.com $@
 }
 
 clipcat () {
