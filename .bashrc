@@ -55,6 +55,10 @@ clipcat () {
 	fi
 }
 
+search-history () {
+    cat ~/.bash_history | grep $@
+}
+
 extract () {
      if [ -f $1 ] ; then
          case $1 in

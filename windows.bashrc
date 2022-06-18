@@ -1,7 +1,7 @@
 alias ls='ls --color=auto'
+alias yt-dl='youtube-dl'
 alias mpv='mpv.com'
 alias python3='py'
-alias yt-dl='youtube-dl'
 alias msbuild='msbuild.exe'
 alias perl='/c/libs-comps/Strawberry/perl/bin/perl'
 
@@ -15,6 +15,10 @@ gh-clone () {
 
 clipcat () {
     clip < $1
+}
+
+search-history () {
+    cat ~/.bash_history | grep $1
 }
 
 extract () {
