@@ -10,7 +10,11 @@ export PERL5LIB=/c/libs-comps/Strawberry/perl/vendor/lib:/c/libs-comps/Strawberr
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 gh-clone () {
-	git clone https://github.com/$1 $2
+    if [ "$1" = "-ssh" -o "$1" = "--ssh" ]; then
+        git clone git@github.com:$2 $3
+    else
+	    git clone https://github.com/$1 $2
+    fi
 }
 
 clipcat () {

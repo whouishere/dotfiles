@@ -44,7 +44,11 @@ PS1='\[${BRACKET_COLOR}\][\[${USER_COLOR}\]\u\[${OTHERS_COLOR}\]@\[${HOST_COLOR}
 export PATH=$PATH:~/.local/bin
 
 gh-clone () {
-	git clone https://github.com/$1 $2
+	if [ "$1" = "-ssh" -o "$1" = "--ssh" ]; then
+        git clone git@github.com:$2 $3
+    else
+	    git clone https://github.com/$1 $2
+    fi
 }
 
 clipcat () {
