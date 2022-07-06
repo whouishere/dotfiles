@@ -1,6 +1,7 @@
 alias ls='ls --color=auto'
 alias yt-dl='youtube-dl'
 alias mpv='mpv.com'
+alias sudo='gsudo'
 alias python3='py'
 alias msbuild='msbuild.exe'
 alias perl='/c/libs-comps/Strawberry/perl/bin/perl'
